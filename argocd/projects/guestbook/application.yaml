@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  project: guestbook-project
+  source:
+    repoURL: git@github.com:shinneng/home-k8s.git
+    targetRevision: main
+    path: workloads/guestbook
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook

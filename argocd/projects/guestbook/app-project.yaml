@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: guestbook-project
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Guestbook Project
+  sourceRepos:
+  - 'git@github.com:shinneng/home-k8s.git'
+  destinations:
+  - namespace: guestbook
+    server: https://kubernetes.default.svc
+
